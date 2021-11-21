@@ -11,7 +11,10 @@ CURRENCY_DATA = {
     "AUD": {"symbol": "$", "name": "Australian dollar"},
     "AWG": {"symbol": "ƒ", "name": "Aruban florin"},
     "AZN": {"symbol": "AZN", "name": "Azerbaijani manat"},
-    "BAM": {"symbol": "KM", "name": "Bosnia and Herzegovina konvertibilna marka"},
+    "BAM": {
+        "symbol": "KM",
+        "name": "Bosnia and Herzegovina konvertibilna marka",
+    },
     "BBD": {"symbol": "Bds$", "name": "Barbadian dollar"},
     "BDT": {"symbol": "৳", "name": "Bangladeshi taka"},
     "BGN": {"symbol": "лв", "name": "Bulgarian lev"},

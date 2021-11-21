@@ -1,6 +1,7 @@
 import json
 from decimal import Decimal
 
+
 class ClientHelper:
     @staticmethod
     def get_url(base_url, date: str):
