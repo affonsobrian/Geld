@@ -1,6 +1,5 @@
-from geld.common import BASE_URL
+from geld.common.constants import BASE_URL
 from geld.common.exceptions import BaseUrlNotDefined, HelperNotDefined
-from geld.common.helpers import ClientHelper
 from geld.common.singleton import SingletonMeta
 
 
