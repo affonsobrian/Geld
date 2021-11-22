@@ -16,3 +16,7 @@ class InvalidAmount(Exception):
 
 class APICallError(Exception):
     pass
+
+
+class HelperNotDefined(Exception):
+    pass

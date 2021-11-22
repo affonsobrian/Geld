@@ -19,3 +19,12 @@ class ClientHelper:
         data = json.loads(response.text)
         rate = Decimal(data["rates"][to_currency])
         return rate
+
+
+class AsynClientHelper(ClientHelper):
+    @staticmethod
+    async def get_rate_from_response(response: dict, to_currency: str):
+        text = await response.text()
+        data = json.loads(text)
+        rate = Decimal(data["rates"][to_currency])
+        return rate
