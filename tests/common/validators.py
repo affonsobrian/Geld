@@ -30,6 +30,4 @@ def amount_validator(amount):
             amount = Decimal(amount)
     except Exception:
         raise InvalidAmount
-    if amount < 0:
-        raise InvalidAmount
     return amount
