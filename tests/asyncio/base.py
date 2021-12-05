@@ -1,10 +1,11 @@
+from geld.common.base_client import BaseClient
 from datetime import date
 from decimal import Decimal
 
 from geld.common.helpers import AsynClientHelper
 
 
-class AsyncClientBase:
+class AsyncClientBase(BaseClient):
     helper = AsynClientHelper
 
     async def convert_currency(

@@ -1,13 +1,13 @@
+from geld.common.base_client import BaseClient
 from datetime import date
 from decimal import Decimal
+from geld.common.helpers import ClientHelper
 
-from geld.common.helpers import AsynClientHelper
 
+class SyncClientBase(BaseClient):
+    helper = ClientHelper
 
-class AsyncClientBase:
-    helper = AsynClientHelper
-
-    async def convert_currency(
+    def convert_currency(
         from_currency: str,
         to_currency: str,
         amount: Decimal,
