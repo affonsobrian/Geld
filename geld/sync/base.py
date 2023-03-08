@@ -17,7 +17,7 @@ class SyncClientBase:
         to_currency: str,
         amount: Decimal,
         date: str = None,
-    ):
+    ) -> Decimal:
         if from_currency == to_currency:
             return amount
         

@@ -7,7 +7,19 @@ from geld.common.exceptions import (
 )
 
 
-def currency_code_validator(currency_code):
+def currency_code_validator(currency_code: str) -> str:
+    """
+    Validates a given currency code.
+
+    Args:
+        currency_code (str): The currency code to validate.
+
+    Returns:
+        str: The validated currency code.
+
+    Raises:
+        InvalidCurrencyCode: If the given currency code is not valid.
+    """
     try:
         _ = CURRENCY_DATA[currency_code]
     except KeyError:
@@ -15,7 +27,19 @@ def currency_code_validator(currency_code):
     return currency_code
 
 
-def date_validator(date):
+def date_validator(date: str) -> str:
+    """
+    Validates a given date.
+
+    Args:
+        date (str or datetime.date): The date to validate.
+
+    Returns:
+        str: The validated date in the format "YYYY-MM-DD".
+
+    Raises:
+        InvalidDate: If the given date is not valid.
+    """
     try:
         if not isinstance(date, str):
             date = date.isoformat()[0:10]
@@ -24,7 +48,19 @@ def date_validator(date):
     return date
 
 
-def amount_validator(amount):
+def amount_validator(amount: Decimal) -> Decimal:
+    """
+    Validates a given amount.
+
+    Args:
+        amount (Decimal or float or int or str): The amount to validate.
+
+    Returns:
+        Decimal: The validated amount as a Decimal object.
+
+    Raises:
+        InvalidAmount: If the given amount is not valid (not a Decimal object, negative).
+    """
     try:
         if not isinstance(amount, Decimal):
             amount = Decimal(amount)
