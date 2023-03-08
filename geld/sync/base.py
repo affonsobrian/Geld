@@ -43,7 +43,7 @@ class SyncClientBase:
         }
     
     def _execute_request(self, url: str, params: dict):
-        requests.get(url, params=params)
+        return requests.get(url, params=params)
     
     def _get_rate_from_response(self, response, to_currency: str):
         data = json.loads(response.text)
