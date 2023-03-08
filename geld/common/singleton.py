@@ -4,6 +4,7 @@ class SingletonMeta(type):
     The class maintains a dictionary of instances created by the class,
     and ensures that only one instance of the class is ever created.
     """
+
     _instances = {}
 
     def __call__(cls, *args, **kwargs):

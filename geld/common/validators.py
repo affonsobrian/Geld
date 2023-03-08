@@ -1,3 +1,4 @@
+from datetime import datetime
 from decimal import Decimal
 from geld.common.constants import CURRENCY_DATA
 from geld.common.exceptions import (
@@ -32,7 +33,7 @@ def date_validator(date: str) -> str:
     Validates a given date.
 
     Args:
-        date (str or datetime.date): The date to validate.
+        date str or datetime.datetime): The date to validate.
 
     Returns:
         str: The validated date in the format "YYYY-MM-DD".
@@ -40,10 +41,13 @@ def date_validator(date: str) -> str:
     Raises:
         InvalidDate: If the given date is not valid.
     """
+    if not date or date == "latest":
+        return "latest"
     try:
-        if not isinstance(date, str):
-            date = date.isoformat()[0:10]
-    except Exception:
+        if isinstance(date, str):
+            date = datetime.fromisoformat(date)
+        date, _ = date.isoformat().split("T")
+    except (AttributeError, ValueError):
         raise InvalidDate
     return date
 
