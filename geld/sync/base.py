@@ -4,6 +4,7 @@ from datetime import date
 from decimal import Decimal
 from geld.common.exceptions import APICallError, BaseUrlNotDefined
 
+
 class SyncClientBase:
     _base_url = None
 
@@ -17,14 +18,14 @@ class SyncClientBase:
         to_currency: str,
         amount: Decimal,
         date: str = None,
-    ):
+    ) -> Decimal:
         if from_currency == to_currency:
             return amount
-        
+
         url = self._get_url(date)
         params = self._get_params(from_currency, to_currency)
         response = self._execute_request(url, params)
-        
+
         if not response.status_code == 200:
             raise APICallError
 
@@ -35,21 +36,20 @@ class SyncClientBase:
 
     def _get_url(self, date: str):
         return f"{self._base_url}/{date}/"
-    
+
     def _get_params(self, from_currency: str, to_currency: str):
         return {
             "base": from_currency,
             "symbols": to_currency,
         }
-    
+
     def _execute_request(self, url: str, params: dict):
-        requests.get(url, params=params)
-    
+        return requests.get(url, params=params)
+
     def _get_rate_from_response(self, response, to_currency: str):
         data = json.loads(response.text)
         rate = Decimal(data["rates"][to_currency])
         return rate
-    
-    def _convert_amount(self, amount: Decimal, rate: Decimal):
-        return amount*rate
 
+    def _convert_amount(self, amount: Decimal, rate: Decimal):
+        return amount * rate
