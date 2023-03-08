@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "geld"
-version = "0.2.1"
+version = "0.3.0"
 description = "A library to handle money operations"
 authors = ["Affonso Brian Pereira Azevedo <contato.affonsobrian@gmail.com>"]
 license = "MIT"
